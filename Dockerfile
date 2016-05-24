@@ -7,6 +7,8 @@ RUN apt-get update && \
 
 RUN cd /opt && \
     git clone https://github.com/ether/etherpad-lite && \
+    cd etherpad-lite && \
+    bin/installDeps.sh && \
     rm settings.json
 
 COPY entrypoint.sh /entrypoint.sh
@@ -14,8 +16,6 @@ VOLUME /opt/etherpad-lite/var
 
 RUN ln -s /opt/etherpad-lite/var/settings.json /opt/etherpad-lite/settings.json && \
     ln -s /opt/etherpad-lite/var/package.json /opt/etherpad-lite/package.json && \
-    cd etherpad-lite && \
-    bin/installDeps.sh && \
     npm install
 
 WORKDIR /opt/etherpad-lite
