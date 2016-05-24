@@ -1,4 +1,5 @@
 FROM node:0.10
+MAINTAINER Aline Freitas <aline@alinefreitas.com.br>
 
 RUN apt-get update && \
     apt-get install -y gzip git curl python libssl-dev mysql-client && \
